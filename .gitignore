@@ -240,3 +240,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+/MicroBlog.Presentation/Content/Bootstrap*
+/MicroBlog.Presentation/fonts
+/MicroBlog.Presentation/Scripts

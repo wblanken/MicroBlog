@@ -3,8 +3,59 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Data  Access Layer", "1 - Data  Access Layer", "{DE2DBFF0-9193-48E7-9E65-A8A6492B1EA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBlog.Repository", "MicroBlog.Repository\MicroBlog.Repository.csproj", "{FF4A1058-0B54-4CA7-B275-335CD0F12F85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBlog.Entities", "MicroBlog.Entities\MicroBlog.Entities.csproj", "{02ADDADA-D807-4C9F-8F4C-C2E4FA723E1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBlog.Persistence", "MicroBlog.Persistence\MicroBlog.Persistence.csproj", "{F87BB60E-97D5-4C5E-B7CA-B7E38FFC0788}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Business Layer", "2 - Business Layer", "{DB1FB223-7348-40E7-AE93-14944FAD0D1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Presentation Layer", "3 - Presentation Layer", "{6830AF2E-CC37-45D4-9239-ACF63C16F9A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBlog.Service", "MicroBlog.Service\MicroBlog.Service.csproj", "{706E52D4-6970-4620-991F-DFEAFC1B0C07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Tests", "4 - Tests", "{77CF21C9-C87D-47FB-B9C0-12697AF39C49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBlog.Service.Tests", "MicroBlog.Service.Tests\MicroBlog.Service.Tests.csproj", "{C1A93230-836B-4674-A6DB-E0173A9B48E7}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF4A1058-0B54-4CA7-B275-335CD0F12F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF4A1058-0B54-4CA7-B275-335CD0F12F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF4A1058-0B54-4CA7-B275-335CD0F12F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF4A1058-0B54-4CA7-B275-335CD0F12F85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02ADDADA-D807-4C9F-8F4C-C2E4FA723E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02ADDADA-D807-4C9F-8F4C-C2E4FA723E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02ADDADA-D807-4C9F-8F4C-C2E4FA723E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02ADDADA-D807-4C9F-8F4C-C2E4FA723E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F87BB60E-97D5-4C5E-B7CA-B7E38FFC0788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87BB60E-97D5-4C5E-B7CA-B7E38FFC0788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87BB60E-97D5-4C5E-B7CA-B7E38FFC0788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87BB60E-97D5-4C5E-B7CA-B7E38FFC0788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{706E52D4-6970-4620-991F-DFEAFC1B0C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{706E52D4-6970-4620-991F-DFEAFC1B0C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{706E52D4-6970-4620-991F-DFEAFC1B0C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{706E52D4-6970-4620-991F-DFEAFC1B0C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A93230-836B-4674-A6DB-E0173A9B48E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A93230-836B-4674-A6DB-E0173A9B48E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A93230-836B-4674-A6DB-E0173A9B48E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A93230-836B-4674-A6DB-E0173A9B48E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF4A1058-0B54-4CA7-B275-335CD0F12F85} = {DB1FB223-7348-40E7-AE93-14944FAD0D1A}
+		{02ADDADA-D807-4C9F-8F4C-C2E4FA723E1E} = {DE2DBFF0-9193-48E7-9E65-A8A6492B1EA5}
+		{F87BB60E-97D5-4C5E-B7CA-B7E38FFC0788} = {DE2DBFF0-9193-48E7-9E65-A8A6492B1EA5}
+		{706E52D4-6970-4620-991F-DFEAFC1B0C07} = {DB1FB223-7348-40E7-AE93-14944FAD0D1A}
+		{C1A93230-836B-4674-A6DB-E0173A9B48E7} = {77CF21C9-C87D-47FB-B9C0-12697AF39C49}
 	EndGlobalSection
 EndGlobal
