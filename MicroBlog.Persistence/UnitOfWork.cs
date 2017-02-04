@@ -12,9 +12,11 @@ namespace MicroBlog.Persistence
         {
             _context = context;
             Posts = new Repository<Post>(_context);
+            Users = new Repository<User>(_context);
         }
 
         public IRepository<Post> Posts { get; private set; }
+        public IRepository<User> Users { get; private set; }
 
         public int Complete()
         {
