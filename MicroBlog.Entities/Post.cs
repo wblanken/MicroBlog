@@ -6,17 +6,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MicroBlog.Entities
 {
     [Table("Post")]
-    public class Post : BaseEntity
+    public class Post
     {
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(140)]
         public string Message { get; set; }
+
         [Required]
         public int AuthorId { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         [ForeignKey(nameof(AuthorId))]
-        public User Author { get; set; }
+        public User User { get; set; }
 
         public ICollection<User> RePosts { get; set; }
 

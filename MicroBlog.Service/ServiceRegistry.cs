@@ -9,7 +9,9 @@ namespace MicroBlog.Service
         public ServiceRegistry()
         {
             For<IUnitOfWork>().Use<UnitOfWork>();
+            For<IAuthRepository>().Use<AuthRepository>();
             For<IMicroBloggingService>().Use<MicroBloggingService>();
+            For<IAccountService>().Use<AccountService>();
         }
     }
 }

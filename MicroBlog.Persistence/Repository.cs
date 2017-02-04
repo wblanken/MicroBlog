@@ -4,12 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using MicroBlog.Entities;
 using MicroBlog.Repository;
 
 namespace MicroBlog.Persistence
 {
-    internal class Repository<T> : IRepository<T> where T : BaseEntity
+    internal class Repository<T> : IRepository<T> where T : class
     {
         protected readonly DbContext Context;
 
@@ -53,12 +52,12 @@ namespace MicroBlog.Persistence
             return Context.Set<T>().Add(entity);
         }
 
-        public T Update(T entity)
+        public T Update(T entity, int id)
         {
             if (entity == null)
                 return null;
 
-            var existing = Context.Set<T>().Find(entity.Id);
+            var existing = Context.Set<T>().Find(id);
             if (null != existing)
             {
                 Context.Entry(existing).CurrentValues.SetValues(entity);

@@ -1,5 +1,4 @@
 ﻿using System.Web.Http;
-using MicroBlog.Presentation.App_Start;
 
 namespace MicroBlog.Presentation
 {
@@ -8,16 +7,15 @@ namespace MicroBlog.Presentation
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            StructuremapWebApi.Start();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
+            /*config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
+            );*/
         }
     }
 }

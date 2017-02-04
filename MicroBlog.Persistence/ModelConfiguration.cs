@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using MicroBlog.Entities;
 
 namespace MicroBlog.Persistence
@@ -7,6 +8,7 @@ namespace MicroBlog.Persistence
     {
         public static void Configure(DbModelBuilder modelBuilder)
         {
+            ConfigureIdentity(modelBuilder);
             ConfigurePostEntity(modelBuilder);
             ConfigureUserEntity(modelBuilder);
         }
@@ -21,7 +23,7 @@ namespace MicroBlog.Persistence
                 .WithMany(m => m.RePosts)
                 .Map(m =>
                 {
-                    m.MapLeftKey("UserId");
+                    m.MapLeftKey("AuthorId");
                     m.MapRightKey("PostId");
                     m.ToTable("RePost");
                 });
@@ -29,12 +31,26 @@ namespace MicroBlog.Persistence
 
         private static void ConfigureUserEntity(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<User>().Property(p => p.PasswordHash).HasMaxLength(500);
+            modelBuilder.Entity<User>().Property(p => p.SecurityStamp).HasMaxLength(500);
+            modelBuilder.Entity<User>().Property(p => p.PhoneNumber).HasMaxLength(50);
+
             modelBuilder.Entity<User>()
-                .HasKey(k => k.Id)
                 .HasMany(m => m.Posts)
-                .WithRequired(r => r.Author)
+                .WithRequired(r => r.User)
                 .HasForeignKey(f => f.AuthorId)
                 .WillCascadeOnDelete(false);
+        }
+
+        private static void ConfigureIdentity(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Role>().ToTable("Role");
+            modelBuilder.Entity<UserRole>().ToTable("UserRole").HasKey(k => k.RoleId);
+            modelBuilder.Entity<UserLogin>().ToTable("UserLogin").HasKey(k => k.UserId);
+            modelBuilder.Entity<UserClaim>().ToTable("UserClaim");
+            modelBuilder.Entity<UserClaim>().Property(p => p.ClaimType).HasMaxLength(150);
+            modelBuilder.Entity<UserClaim>().Property(p => p.ClaimValue).HasMaxLength(500);
         }
     }
 }
