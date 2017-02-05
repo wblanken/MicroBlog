@@ -1,1 +1,7 @@
-﻿
+﻿<div class="row">
+   <h3>Recent Posts:</h3>
+   <div class="row" ng-repeat="item in posts">
+      <div class="row">@{{item.User.UserName}}&nbsp;&bull;&nbsp;{{item.CreatedOn | date:'MM/dd/yy@h:mma'}}:</div>
+      <div class="row">{{item.Message}}</div>
+   </div>
+</div>

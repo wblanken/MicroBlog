@@ -17,7 +17,13 @@ namespace MicroBlog.Service
 
         public IEnumerable<Post> GetRecentPosts()
         {
-            return _microBlogUnitOfWork.Posts.GetAll().OrderBy(o => o.CreatedOn);
+            var posts =_microBlogUnitOfWork.Posts.GetAll().OrderByDescending(o => o.CreatedOn);
+            foreach (var post in posts)
+            {
+                post.User = _microBlogUnitOfWork.Users.Get(post.AuthorId);
+            }
+
+            return posts;
         }
 
         public async Task<IEnumerable<Post>> GetRecentPostsAsync()

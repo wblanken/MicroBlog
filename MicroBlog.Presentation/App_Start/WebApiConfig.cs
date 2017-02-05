@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace MicroBlog.Presentation
 {
@@ -7,6 +8,7 @@ namespace MicroBlog.Presentation
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
             // Web API routes
             config.MapHttpAttributeRoutes();

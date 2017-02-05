@@ -10,7 +10,7 @@
 </head>
 <body>
    <div>
-      <nav class="navbar navbar-default" role="navigation" data-ng-controller="indexController">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-ng-controller="indexController">
          <div class="container">
             <div class="navbar-header">
                <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
@@ -36,12 +36,13 @@
             </div>
             <p class="text-center">
                Demo app using AngularJS, using OAuth bearer token authentication, ASP.NET Web API 2,
-               OWIN middleware, and ASP.NET Identity for gerating tokens and registering users.
+               OWIN middleware, and ASP.NET Identity for generating tokens and registering users.
             </p>
          </div>
       </div>
-
+      
       <div class="container">
+         <add-post></add-post>
          <div data-ng-view="">
          </div>
       </div>
