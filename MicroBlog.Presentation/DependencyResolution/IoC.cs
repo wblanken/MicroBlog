@@ -22,12 +22,15 @@ namespace MicroBlog.Presentation.DependencyResolution {
     using StructureMap;
 	
     public static class IoC {
+        public static IContainer Container { get; set; }
+
         public static IContainer Initialize() {
-            return new Container(c =>
+            Container = new Container(c =>
             {
                 c.AddRegistry<DefaultRegistry>();
                 c.AddRegistry<ServiceRegistry>();
             });
+            return Container;
         }
     }
 }

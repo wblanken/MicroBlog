@@ -38,6 +38,7 @@ namespace MicroBlog.Service
 
         public Post CreatePost(Post post)
         {
+            post.User = _microBlogUnitOfWork.Users.FindUserByName(post.UserName);
             var retPost = _microBlogUnitOfWork.Posts.Create(post);
             _microBlogUnitOfWork.Complete();
 

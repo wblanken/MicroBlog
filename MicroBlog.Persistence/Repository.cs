@@ -8,7 +8,7 @@ using MicroBlog.Repository;
 
 namespace MicroBlog.Persistence
 {
-    internal class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly DbContext Context;
 

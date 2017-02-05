@@ -60,7 +60,7 @@ namespace MicroBlog.Presentation.Controllers.Tests
                 Message = "Created Post!",
                 Id = 2
             };
-            controller.CreatePost(testPost);
+            controller.CreatePost(Post);
             _mockService.Verify(v => v.CreatePost(testPost), Times.Once);
 
             var posts = controller.GetRecent() as OkNegotiatedContentResult<IEnumerable<Post>>;

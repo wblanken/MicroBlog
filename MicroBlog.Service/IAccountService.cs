@@ -10,5 +10,6 @@ namespace MicroBlog.Service
     public interface IAccountService : IDisposable
     {
         Task<IdentityResult> RegisterUserAsync(string userName, string password);
+        Task<User> FindUser(string userName, string password);
     }
 }

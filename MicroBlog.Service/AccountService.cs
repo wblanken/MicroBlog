@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MicroBlog.Entities;
 using MicroBlog.Repository;
 using Microsoft.AspNet.Identity;
 
@@ -16,6 +17,11 @@ namespace MicroBlog.Service
         public async Task<IdentityResult> RegisterUserAsync(string userName, string password)
         {
             return await _authRepository.RegisterUser(userName, password);
+        }
+
+        public async Task<User> FindUser(string userName, string password)
+        {
+            return await _authRepository.FindUser(userName, password);
         }
 
         public void Dispose()

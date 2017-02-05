@@ -7,7 +7,7 @@ namespace MicroBlog.Repository
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Post> Posts { get; }
-        IRepository<User> Users { get; }
+        IUserRepository Users { get; }
         
         int Complete();
         Task<int> CompleteAsync();

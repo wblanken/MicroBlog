@@ -22,6 +22,9 @@ namespace MicroBlog.Entities
 
         [ForeignKey(nameof(AuthorId))]
         public User User { get; set; }
+        
+        [NotMapped]
+        public string UserName { get; set; }
 
         public ICollection<User> RePosts { get; set; }
 

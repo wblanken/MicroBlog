@@ -2,7 +2,6 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Http;
 using System.Web.Optimization;
 using MicroBlog.Presentation.App_Start;
 
@@ -14,7 +13,6 @@ namespace MicroBlog.Presentation
         {
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
-            // GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

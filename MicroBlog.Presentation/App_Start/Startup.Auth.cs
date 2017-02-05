@@ -1,4 +1,8 @@
-﻿using Owin;
+﻿using System;
+using MicroBlog.Presentation.Providers;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
+using Owin;
 
 namespace MicroBlog.Presentation
 {
@@ -6,7 +10,21 @@ namespace MicroBlog.Presentation
     {
         public void ConfigureAuth(IAppBuilder app)
         {
-            
+            ConfigureOAuth(app);
+        }
+
+        public void ConfigureOAuth(IAppBuilder app)
+        {
+            var oAuthServerOptions = new OAuthAuthorizationServerOptions()
+            {
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/token"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                Provider = new SimpleAuthorizationServerProvider()
+            };
+
+            app.UseOAuthAuthorizationServer(oAuthServerOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }
 }
