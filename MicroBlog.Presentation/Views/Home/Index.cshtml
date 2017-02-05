@@ -2,16 +2,72 @@
 
 <!DOCTYPE html>
 
-<html>
+<html data-ng-app="MicroBlogApp">
 <head>
-   <title>title</title>
+   <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+   <title>MicroBlog</title>
    @Styles.Render("~/Content/Css")
 </head>
 <body>
-<div>
-     <h1>Hello, World!</h1>
-</div>
-   
+   <div>
+      <nav class="navbar navbar-default" role="navigation" data-ng-controller="indexController">
+         <div class="container">
+            <div class="navbar-header">
+               <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+               </button>
+               <a class="navbar-brand" href="#/">Micro Blog</a>
+            </div>
+            <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
+               <ul class="nav navbar-nav navbar-right">
+                  <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                  <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
+                  <li data-ng-hide="authentication.isAuth"><a href="#/login">Login</a></li>
+                  <li data-ng-hide="authentication.isAuth"><a href="#/signup">Sign Up</a></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+
+      <div class="jumbotron">
+         <div class="container">
+            <div class="page-header text-center">
+               <h1>MicroBlogging Demo App</h1>
+            </div>
+            <p class="text-center">
+               Demo app using AngularJS, using OAuth bearer token authentication, ASP.NET Web API 2,
+               OWIN middleware, and ASP.NET Identity for gerating tokens and registering users.
+            </p>
+         </div>
+      </div>
+
+      <div class="container">
+         <div data-ng-view="">
+         </div>
+      </div>
+
+      <div id="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <p class="text-muted">
+                     Created by Will Blankenship &copy; @DateTime.Now.Year.&nbsp;&nbsp;
+                     GitHub:&nbsp;<a target="_blank" href="http://github.com/wblanken">wblanken</a>,&nbsp;
+                     Twitter:&nbsp;<a target="_blank" href="http://twitter.com/blanks821">@@blanks821</a>
+                  </p>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                  <p class="text-muted"></p>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+
    @Scripts.Render("~/bundles/vendors")
+   @Scripts.Render("~/bundles/app")
 </body>
 </html>

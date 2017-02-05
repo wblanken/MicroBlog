@@ -186,6 +186,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\app.js" />
+    <Content Include="App\controllers\homeController.js" />
+    <Content Include="App\controllers\indexController.js" />
+    <Content Include="App\controllers\loginController.js" />
+    <Content Include="App\controllers\signupController.js" />
+    <Content Include="App\services\authService.js" />
+    <Content Include="App\services\authServiceIntercept.js" />
+    <Content Include="App\views\home.html" />
+    <Content Include="App\views\login.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -201,10 +210,18 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\angular-local-storage.js" />
+    <Content Include="Scripts\angular-local-storage.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Content\flatly.bootstrap.css" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-local-storage.min.js.map" />
+    <Content Include="App\views\signup.html" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
