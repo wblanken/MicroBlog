@@ -264,6 +264,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreatePostViewModel.cs" />
     <Compile Include="ViewModels\RegisterUserViewModel.cs" />
+    <Compile Include="ViewModels\UpdatePostViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

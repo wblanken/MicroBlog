@@ -77,7 +77,7 @@ namespace MicroBlog.Presentation.Controllers
         [HttpPost]
         [Authorize]
         [Route("update")]
-        public IHttpActionResult UpdatePost([FromBody] string message, [FromBody] int postId)
+        public IHttpActionResult UpdatePost([FromBody] UpdatePostViewModel updatePost)
         {
             if (!ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace MicroBlog.Presentation.Controllers
                 var principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
                 var userName = principal.Claims.First(f => f.Type == "sub").Value;
 
-                _microBloggingService.UpdatePost(message, userName, postId);
+                _microBloggingService.UpdatePost(updatePost.Message, userName, updatePost.PostId);
                 return Ok();
             }
             catch (Exception e)

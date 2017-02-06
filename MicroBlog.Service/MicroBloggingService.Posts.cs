@@ -93,7 +93,10 @@ namespace MicroBlog.Service
             }
 
             post.Message = message;
-            return _microBlogUnitOfWork.Posts.Update(post, postId);
+            var retMessage = _microBlogUnitOfWork.Posts.Update(post, postId);
+            _microBlogUnitOfWork.Complete();
+
+            return retMessage;
         }
 
         /// <summary>
