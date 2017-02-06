@@ -17,7 +17,7 @@
                         $location.path('/home');
                     },
                     function(err) {
-                        $scope.message = err.error_description;
+                        $scope.message = "Could not login: " + err.error_description;
                     });
         };
     }

@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
 using MicroBlog.Entities;
+using MicroBlog.Presentation.ViewModels;
 using MicroBlog.Service;
 
 namespace MicroBlog.Presentation.Controllers
@@ -25,13 +26,13 @@ namespace MicroBlog.Presentation.Controllers
             var recentPosts = _microBloggingService.GetRecentPosts();
             if (null == recentPosts)
             {
-                return NotFound();   
+                return NotFound();
             }
             return Ok(recentPosts);
         }
 
         [HttpGet]
-        [Route("{id:int}")]
+        [Route("getPost/{id:int}")]
         public Post GetById(int id)
         {
             return _microBloggingService.GetPostById(id);
@@ -39,17 +40,31 @@ namespace MicroBlog.Presentation.Controllers
 
         [HttpPost]
         [Authorize]
-        public IHttpActionResult CreatePost([FromBody]Post post)
+        [Route("create")]
+        public IHttpActionResult CreatePost([FromBody] CreatePostViewModel postModel)
         {
-            // TODO: Fix user post tracking, this is a workaround for now.
-            var principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
-            var userName = principal.Claims.First(f => f.Type == "sub").Value;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            post.CreatedOn = DateTime.UtcNow;
-            post.UserName = userName;
+            var post = new Post
+            {
+                Message = postModel.message,
+                UserName = postModel.userName,
+                CreatedOn = DateTime.UtcNow
+            };
 
             try
             {
+                if (string.IsNullOrEmpty(post.UserName))
+                {
+                    var principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+                    var userName = principal.Claims.First(f => f.Type == "sub").Value;
+
+                    post.UserName = userName;
+                }
+
                 _microBloggingService.CreatePost(post);
                 return Ok();
             }
@@ -59,13 +74,46 @@ namespace MicroBlog.Presentation.Controllers
             }
         }
 
-        [HttpDelete]
-        [Route("{id:int}")]
-        public IHttpActionResult DeletePost(int id)
+        [HttpPost]
+        [Authorize]
+        [Route("update")]
+        public IHttpActionResult UpdatePost([FromBody] string message, [FromBody] int postId)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
-                _microBloggingService.RemovePostById(id);
+                var principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+                var userName = principal.Claims.First(f => f.Type == "sub").Value;
+
+                _microBloggingService.UpdatePost(message, userName, postId);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Authorize]
+        [Route("deletePost/{id:int}")]
+        public IHttpActionResult DeletePost(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+                var userName = principal.Claims.First(f => f.Type == "sub").Value;
+
+                _microBloggingService.RemovePostById(id, userName);
                 return Ok();
             }
             catch (Exception e)

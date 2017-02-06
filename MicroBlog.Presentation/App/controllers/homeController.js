@@ -1,18 +1,24 @@
 ﻿(function(app) {
     app.controller("homeController", homeController);
-    homeController.$inject = ["$rootScope", "$scope", "postService"];
+    homeController.$inject = ["$scope", "postService", "authService"];
 
-    function homeController($rootScope, $scope, postService) {
-        getRecentPosts();
-        function getRecentPosts() {
+    function homeController($scope, postService, authService) {
+
+        getPosts();
+        function getPosts() {
             postService.getRecentPosts().then(function(posts) {
                 $scope.posts = posts.data;
                 console.log($scope.posts);
             });
         }
 
-        $rootScope.$on("sampleAdded"), function() {
-            getRecentPosts();
+        $scope.removePost = function(id) {
+            postService.deletePost(id).then(getPosts).catch(function(err) {
+                console.log("Delete failed for post: " + id + "\n" + err.message);
+            });
         }
+
+        $scope.$on("postAdded", getPosts);
+        $scope.authentication = authService.authentication;
     };
 })(angular.module("MicroBlogApp"));

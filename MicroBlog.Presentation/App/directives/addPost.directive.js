@@ -1,29 +1,34 @@
-﻿(function(app) {
-	app.directive("addPost", addPost);
+﻿(function (app) {
+    app.directive("addPost", addPost);
 
-	var controller = function ($rootScope, $scope, $http, authService, postService) {
-		var addPt = this;
+    var controller = function ($rootScope, $scope, $http, authService, postService) {
+        var addPt = this;
 
-		$scope.postData = {
-		    message : ""
-		}
+        $scope.authentication = authService.authentication;
+        $scope.message = "";
 
-		$scope.message = "";
+        setPostData();
+        function setPostData() {
+            $scope.postData = {
+                message: "",
+                userName: $scope.authentication.userName
+            }
+        }
 
-		addPt.submit = function () {
-		    if ($scope.postData.message !== "") {
-		        postService.CreatePost($scope.postData)
-		            .then(function(response) {
+        addPt.submit = function () {
+            if ($scope.postData.message !== "") {
+                postService.createPost($scope.postData)
+		            .then(function (response) {
 		                $rootScope.$broadcast("postAdded");
-		                },
-		                function(err) {
+		                setPostData();
+		                $scope.addPostForm.$setPristine();
+		            },
+		                function (err) {
 		                    $scope.message = err.error_description;
 		                });
-		    }
-		}
-
-		$scope.authentication = authService.authentication;
-	}
+            }
+        }
+    }
 
     function addPost() {
         return {

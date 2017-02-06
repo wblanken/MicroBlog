@@ -6,9 +6,9 @@
 
                 config.headers = config.headers || {};
 
-                var authData = localStorageService.get('authorizationData');
+                var authData = localStorageService.get("authorizationData");
                 if (authData) {
-                    config.headers.Authorization = 'Bearer ' + authData.token;
+                    config.headers.Authorization = "Bearer " + authData.token;
                 }
 
                 return config;
@@ -16,7 +16,7 @@
 
             function responseError(rejection) {
                 if (rejection.status === 401) {
-                    $location.path('/login');
+                    $location.path("/login");
                 }
                 return $q.reject(rejection);
             }

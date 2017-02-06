@@ -8,6 +8,7 @@ namespace MicroBlog.Entities
     [Table("Post")]
     public class Post
     {
+
         [Key]
         public int Id { get; set; }
 
@@ -22,7 +23,7 @@ namespace MicroBlog.Entities
 
         [ForeignKey(nameof(AuthorId))]
         public User User { get; set; }
-        
+
         [NotMapped]
         public string UserName { get; set; }
 
@@ -34,7 +35,8 @@ namespace MicroBlog.Entities
 
             return otherPost != null 
                 && (otherPost.CreatedOn == this.CreatedOn) 
-                && otherPost.Message.Equals(this.Message);
+                && otherPost.Message.Equals(this.Message)
+                && otherPost.AuthorId.Equals(this.AuthorId);
         }
     }
 }

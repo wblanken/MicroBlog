@@ -1,7 +1,13 @@
 ﻿<div class="row" data-ng-hide="!authentication.isAuth">
-   <form class="form form-horizontal">
-      <div class="col-sm-10"><input type="text" class="form-control" placeholder="What's going on?" data-ng-model="postData.message"/>
+   <form class="form" name="addPostForm">
+      <div class="input-group">
+         <input name="postMessage" type="text" class="form-control" placeholder="What's going on?" data-ng-model="postData.message" required />
+         <span class="input-group-btn">
+            <button class="btn btn-info" data-ng-click="addPt.submit()" type="button">Submit</button>
+         </span>
       </div>
-      <button class="btn btn-info col-sm-1" data-ng-click="addPt.submit()"0>Submit</button>
+      <div data-ng-hide="message == ''" class="alert alert-danger">
+         {{message}}
+      </div>
    </form>
 </div>

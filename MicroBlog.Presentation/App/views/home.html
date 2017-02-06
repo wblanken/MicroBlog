@@ -1,7 +1,18 @@
 ﻿<div class="row">
    <h3>Recent Posts:</h3>
-   <div class="row" ng-repeat="item in posts">
-      <div class="row">@{{item.User.UserName}}&nbsp;&bull;&nbsp;{{item.CreatedOn | date:'MM/dd/yy@h:mma'}}:</div>
-      <div class="row">{{item.Message}}</div>
+   <div class="panel panel-primary" ng-repeat="item in posts">
+      <div class="panel-heading">
+         <div class="post-heading-text pull-left">@{{item.User.UserName}}&nbsp;&bull;&nbsp;{{item.CreatedOn | date:'MM/dd/yy@h:mma'}}:</div>
+         <div class="pull-right" data-ng-show="item.User.UserName == authentication.userName">
+            <!--<div class="btn btn-info btn-sm"><small><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></small></div>-->
+            <button class="btn btn-danger btn-sm" data-ng-click="removePost(item.Id)">
+               <small><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></small>
+            </button>
+         </div>
+         <div class="clearfix "></div>
+      </div>
+      <div class="panel-body">
+         {{item.Message}}
+      </div>
    </div>
 </div>
