@@ -23,7 +23,7 @@ namespace MicroBlog.Presentation
                 .IncludeDirectory("~/App/controllers","*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/flatly.bootstrap.css", 
+                "~/Content/thirdparty/flatly.bootstrap.css", 
                 "~/Content/site.css"));
         }
     }
