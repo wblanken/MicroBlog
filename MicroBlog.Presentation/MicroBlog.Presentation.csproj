@@ -201,6 +201,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flatly.bootstrap.min.css" />
     <Content Include="Content\site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -220,7 +221,6 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Content\thirdparty\flatly.bootstrap.css" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-local-storage.min.js.map" />
     <Content Include="App\views\signup.html" />
